@@ -1,28 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Basic Rails app consuming open data from {Canadian Open Data Library}[http://open.canada.ca/en/open-data].
 
-Things you may want to cover:
+General info:
 
-* Ruby version
+* App consumers CSV from open data library
 
-* System dependencies
+* App does not use a database backend, it just builds new objects for each record in the CSV
 
-* Configuration
+* App uses a slimmed down version go Google's Material Design from their progressive web app docs
 
-* Database creation
+=== Contributing
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Please feel free to contribute.
