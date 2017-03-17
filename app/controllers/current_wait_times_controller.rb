@@ -22,11 +22,19 @@ class CurrentWaitTimesController < ApplicationController
       cwt.commercial_flow_us_bound = row[4]
       cwt.travellers_flow_canada_bound = row[5]
       cwt.travellers_flow_us_bound = row[6]
+      cwt.lat = CurrentWaitTime::LOCATIONS[:"#{cwt.customs_office}"][:lat] if CurrentWaitTime::LOCATIONS[:"#{cwt.customs_office}"]
+      cwt.lng = CurrentWaitTime::LOCATIONS[:"#{cwt.customs_office}"][:lng] if CurrentWaitTime::LOCATIONS[:"#{cwt.customs_office}"]
 
       @current_wait_times << cwt
     end
 
     @current_wait_times.sort_by!(&:customs_office)
+  end
+
+  def show
+    @lat = params[:lat]
+    @lng = params[:lng]  
+    @city = params[:city]
   end
 
   private

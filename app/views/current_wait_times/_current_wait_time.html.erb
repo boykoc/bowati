@@ -1,4 +1,4 @@
-   <div class="card weather-forecast">
+    <div class="card weather-forecast">
       <div class="location"><%= current_wait_time.customs_office %></div>
       <div class="date"><%= current_wait_time.location %></div>
       <div class="description"><%= current_wait_time.last_updated %></div>
@@ -13,5 +13,10 @@
           <div class="wind"><%= current_wait_time.commercial_flow_canada_bound %></div>
           <div class="sunrise"><%= current_wait_time.commercial_flow_us_bound %></div>
         </div>
+      </div>
+      <div class="actions">
+        <% if current_wait_time.lat %>
+          <%= link_to 'Location', current_wait_time_show_path(city: current_wait_time.customs_office, lat: current_wait_time.lat, lng: current_wait_time.lng), class: 'mdl-button mdl-button--primary mdl-button--primary' %>
+        <% end %>
       </div>
     </div>

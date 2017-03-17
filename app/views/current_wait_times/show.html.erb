@@ -1,4 +1,30 @@
-<p id="notice"><%= notice %></p>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
 
-<%= link_to 'Edit', edit_current_wait_time_path(@current_wait_time) %> |
-<%= link_to 'Back', current_wait_times_path %>
+    <div class="card weather-forecast">
+      <div class="location"><%= @city %></div>
+      <div id="map"></div>
+      <div class="actions">
+        <%= link_to 'Back', current_wait_times_path, class: 'mdl-button mdl-button--primary mdl-button--primary' %>
+      </div>
+    </div>
+    <script>
+      function initMap() {
+        var uluru = {lat: <%= @lat %>, lng: <%= @lng %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>&callback=initMap">
+    </script>
